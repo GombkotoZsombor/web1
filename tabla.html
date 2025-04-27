@@ -1,0 +1,24 @@
+<div id="content">
+    <h2>CRUD Táblázat</h2>
+    <input type="text" id="search" placeholder="Keresés...">
+    <table id="table">
+      <thead>
+        <tr>
+          <th>Név</th>
+          <th>Életkor</th>
+          <th>Magasság</th>
+          <th>Súly</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <form id="form">
+      <input type="text" id="name" placeholder="Név" required minlength="2">
+      <input type="number" id="age" placeholder="Életkor" required min="0">
+      <input type="number" id="height" placeholder="Magasság (cm)" required min="0">
+      <input type="number" id="weight" placeholder="Súly (kg)" required min="0">
+      <button type="submit">Hozzáadás</button>
+    </form>
+  </div>
+  <script src="js/tabla.js"></script>
+  
