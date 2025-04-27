@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Chart.js példa</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    table, td, th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+      text-align: center;
+    }
+    tr:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Táblázat és Chart.js diagram</h1>
+
+<table id="data-table">
+  <thead>
+    <tr>
+      <th>Érték 1</th>
+      <th>Érték 2</th>
+      <th>Érték 3</th>
+      <th>Érték 4</th>
+      <th>Érték 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12</td><td>19</td><td>3</td><td>5</td><td>2</td>
+    </tr>
+    <tr>
+      <td>7</td><td>11</td><td>5</td><td>8</td><td>3</td>
+    </tr>
+    <tr>
+      <td>6</td><td>7</td><td>8</td><td>5</td><td>9</td>
+    </tr>
+    <tr>
+      <td>10</td><td>15</td><td>6</td><td>7</td><td>8</td>
+    </tr>
+    <tr>
+      <td>3</td><td>5</td><td>9</td><td>2</td><td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+let chart; // ide rakjuk később a Chart.js diagramot
+
+const table = document.getElementById('data-table');
+const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+for (let row of rows) {
+  row.addEventListener('click', function() {
+    const values = Array.from(this.getElementsByTagName('td')).map(td => Number(td.textContent));
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // Ha már volt korábbi chart, azt töröljük
+    if (chart) {
+      chart.destroy();
+    }
+
+    // Új chart létrehozása
+    chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1.', '2.', '3.', '4.', '5.'],
+        datasets: [{
+          label: 'Kiválasztott sor adatai',
+          data: values,
+          borderColor: 'blue',
+          backgroundColor: 'lightblue',
+          fill: false,
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+}
+</script>
+
+</body>
+</html>
