@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX Beadandó</title>
+</head>
+<body>
+  <h1>AJAX Feladat</h1>
+
+  <h2>Adatok listázása</h2>
+  <button id="loadData">Adatok betöltése</button>
+  <div id="dataList"></div>
+
+  <h2>Új adat hozzáadása</h2>
+  <input id="name" placeholder="Név">
+  <input id="height" placeholder="Magasság">
+  <input id="weight" placeholder="Súly">
+  <button id="createData">Hozzáadás</button>
+
+  <h2>Adat módosítása</h2>
+  <input id="updateId" placeholder="ID módosításhoz">
+  <button id="getDataForId">Adat betöltése módosításhoz</button>
+  <input id="updateName" placeholder="Új Név">
+  <input id="updateHeight" placeholder="Új Magasság">
+  <input id="updateWeight" placeholder="Új Súly">
+  <button id="updateData">Módosítás</button>
+
+  <h2>Adat törlése</h2>
+  <input id="deleteId" placeholder="ID törléshez">
+  <button id="deleteData">Törlés</button>
+
+  <div id="result"></div>
+
+  <script src="ajax.js"></script>
+</body>
+</html>
