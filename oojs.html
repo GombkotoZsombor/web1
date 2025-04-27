@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>OOJS</title>
+</head>
+<body>
+<script>
+ 
+  class Animal {
+    constructor(name) {
+      this.name = name;
+    }
+
+    speak() {
+      const p = document.createElement('p');
+      p.textContent = `${this.name} hangot ad ki.`;
+      document.body.appendChild(p);
+    }
+  }
+
+  
+  class Dog extends Animal {
+    constructor(name, breed) {
+      super(name); 
+      this.breed = breed;
+    }
+
+    bark() {
+      const p = document.createElement('p');
+      p.textContent = `${this.name} (fajta: ${this.breed}) ugat: Vau vau!`;
+      document.body.appendChild(p);
+    }
+  }
+
+  const animal = new Animal("Általános állat");
+  animal.speak();
+
+  const dog = new Dog("Bodri", "Puli");
+  dog.speak();
+  dog.bark();
+</script>
+</body>
+</html>
