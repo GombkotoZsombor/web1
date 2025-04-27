@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Storage API</title>
+</head>
+<body>
+
+<h1>Web Storage (LocalStorage)</h1>
+<input type="text" id="inputData" placeholder="Írj be valamit!">
+<button onclick="saveData()">Mentés</button>
+<button onclick="showData()">Megjelenítés</button>
+
+<p id="storedData"></p>
+
+<script>
+function saveData() {
+    const input = document.getElementById('inputData').value;
+    localStorage.setItem('myData', input);  // Mentés a LocalStorage-ba
+}
+
+function showData() {
+    const data = localStorage.getItem('myData');  // Adatok visszahívása
+    document.getElementById('storedData').textContent = 'Mentett adat: ' + data;
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Geolocation API</title>
+</head>
+<body>
+
+<h1>Geolocation API</h1>
+<button onclick="getLocation()">Helyzet meghatározása</button>
+
+<p id="location"></p>
+
+<script>
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        document.getElementById('location').textContent = "A böngésző nem támogatja a helymeghatározást.";
+    }
+}
+
+function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    document.getElementById('location').textContent = `Szélesség: ${lat}, Hosszúság: ${lon}`;
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            document.getElementById('location').textContent = "A felhasználó elutasította a helyadatokhoz való hozzáférést.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            document.getElementById('location').textContent = "A helyadatok nem állnak rendelkezésre.";
+            break;
+        case error.TIMEOUT:
+            document.getElementById('location').textContent = "A helymeghatározás időtúllépés miatt nem sikerült.";
+            break;
+        case error.UNKNOWN_ERROR:
+            document.getElementById('location').textContent = "Ismeretlen hiba történt.";
+            break;
+    }
+}
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag and Drop API</title>
+  <style>
+    #dragElement {
+      width: 100px;
+      height: 100px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      line-height: 100px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Drag and Drop</h1>
+<p>Húzd át a négyzetet!</p>
+
+<div id="dragElement" draggable="true" ondragstart="dragStart(event)">Húzz</div>
+
+<script>
+function dragStart(event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+document.body.addEventListener('dragover', function(event) {
+    event.preventDefault();
+});
+
+document.body.addEventListener('drop', function(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    const draggedElement = document.getElementById(data);
+    draggedElement.style.position = "absolute";
+    draggedElement.style.left = event.pageX - 50 + "px";
+    draggedElement.style.top = event.pageY - 50 + "px";
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas API</title>
+</head>
+<body>
+
+<h1>Canvas API</h1>
+<canvas id="myCanvas" width="300" height="200" style="border:1px solid #000000;"></canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "green";
+ctx.fillRect(10, 10, 150, 100); // Zöld négyzet rajzolása
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG példa</title>
+</head>
+<body>
+
+<h1>SVG</h1>
+<svg width="400" height="110">
+  <rect width="300" height="100" style="fill:red;stroke-width:2;stroke:rgb(0,0,0)" />
+</svg>
+
+</body>
+</html>
